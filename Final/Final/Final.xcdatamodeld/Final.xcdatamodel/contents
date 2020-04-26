@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="19B88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Course" representedClassName=".Course" syncable="YES">
+        <attribute name="course_description" optional="YES" attributeType="String"/>
+        <attribute name="course_id" optional="YES" attributeType="String"/>
+        <attribute name="course_name" optional="YES" attributeType="String"/>
+        <attribute name="hour" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="instructor" optional="YES" attributeType="String"/>
+        <attribute name="position" optional="YES" attributeType="String"/>
+        <attribute name="prerequisites" optional="YES" attributeType="String"/>
+        <attribute name="seat" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="seat_max" optional="YES" attributeType="Integer 64" defaultValueString="30" usesScalarValueType="YES"/>
+        <attribute name="subject" optional="YES" attributeType="String"/>
+        <attribute name="time" optional="YES" attributeType="String"/>
+        <attribute name="waitlist" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="waitlist_max" optional="YES" attributeType="Integer 64" defaultValueString="10" usesScalarValueType="YES"/>
+        <relationship name="seat_person" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Student" inverseName="course_seat" inverseEntity="Student"/>
+        <relationship name="waitlist_person" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Student" inverseName="course_waitlist" inverseEntity="Student"/>
+    </entity>
+    <entity name="Student" representedClassName=".Student" syncable="YES">
+        <attribute name="account" optional="YES" attributeType="String"/>
+        <attribute name="major" optional="YES" attributeType="String"/>
+        <attribute name="password" optional="YES" attributeType="String"/>
+        <attribute name="pre_information" optional="YES" attributeType="String"/>
+        <attribute name="register_information" optional="YES" attributeType="String"/>
+        <attribute name="student_credit" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="student_id" optional="YES" attributeType="String"/>
+        <attribute name="student_name" optional="YES" attributeType="String"/>
+        <relationship name="course_seat" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Course" inverseName="seat_person" inverseEntity="Course"/>
+        <relationship name="course_waitlist" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Course" inverseName="waitlist_person" inverseEntity="Course"/>
+    </entity>
+    <elements>
+        <element name="Course" positionX="-54" positionY="-9" width="128" height="268"/>
+        <element name="Student" positionX="-36" positionY="90" width="128" height="193"/>
+    </elements>
+</model>
